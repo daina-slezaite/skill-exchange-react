@@ -5,6 +5,8 @@ import Navbar from './components/navbar/Navbar';
 import {Switch, Route} from 'react-router-dom';
 import React, { Component } from 'react'
 import AuthService from './components/services/AuthService';
+import AllSkills from './components/skills/AllSkills';
+import SingleSkill from './components/skills/SingleSkill';
 
 export default class App extends Component {
 
@@ -41,6 +43,8 @@ export default class App extends Component {
       <Switch>
         <Route path='/login' render={props => <Login {...props} setUser={this.setCurrentUser} />} />
         <Route path='/signup' render={props => <Signup {...props} setUser={this.setCurrentUser} />} />
+        <Route exact path='/skills' render={() => <AllSkills />} />
+        <Route exact path='/skills/:skillId' render={props => <SingleSkill {...props} />} />
       </Switch>
     </div>
     )
