@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import AddSkill from './AddSkill';
 
 export default class AllSkills extends Component {
 
@@ -31,6 +32,7 @@ export default class AllSkills extends Component {
                     )
                 })}
                 </ul>
+                <AddSkill getAllProjects={() => this.getAllSkills()} />
             </div>
         )
     }

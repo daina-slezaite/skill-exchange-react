@@ -24,7 +24,7 @@ export default class Navbar extends Component {
             <nav>
                 {this.state.loggedInUser ? 
                     <ul style={{listStyle: 'none', display: 'flex'}}> 
-                        <li><Link to='/'>Skills</Link></li>
+                        <li><Link to='/skills'>Skills</Link></li>
                         <li>
                             <Link to='/logout'>
                                 <button onClick={this.logoutUser}>Logout</button>
