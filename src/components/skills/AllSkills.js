@@ -2,6 +2,8 @@ import axios from 'axios';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import AddSkill from './AddSkill';
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
 
 export default class AllSkills extends Component {
 
@@ -32,7 +34,9 @@ export default class AllSkills extends Component {
                     )
                 })}
                 </ul>
-                <AddSkill getAllProjects={() => this.getAllSkills()} />
+                <Popup trigger={<button> Add new skill </button>} modal>
+                    <AddSkill getAllProjects={() => this.getAllSkills()} />
+                </Popup>
             </div>
         )
     }

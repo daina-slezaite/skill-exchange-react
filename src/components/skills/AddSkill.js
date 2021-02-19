@@ -25,9 +25,7 @@ export default class AddSkill extends Component {
         const description = this.state.description;
         const category = this.state.category;
         axios.post('http://localhost:5000/api/skills', {title, description, category}, {withCredentials: true})
-            .then(response => {
-                console.log(`New skill is ${this.state.title}`)
-                console.log(response);
+            .then(() => {
                 this.props.getAllProjects();
                 this.setState({
                     title: '',
