@@ -24,17 +24,19 @@ export default class Navbar extends Component {
             <nav>
                 {this.state.loggedInUser ? 
                     <ul style={{listStyle: 'none', display: 'flex'}}> 
-                        <li><Link to='/skills'>Skills</Link></li>
+                        <li><Link to='/skills'>Browse skills</Link></li>
                         <li>
                             <Link to='/logout'>
                                 <button onClick={this.logoutUser}>Logout</button>
                             </Link>
                         </li>
+                        <li><Link to='/my-skills'>My skills</Link></li>
                     </ul>
                     :
                     <ul style={{listStyle: 'none', display: 'flex'}}> 
                         <li><Link to='/signup'>Signup</Link></li>
                         <li><Link to='/login'>Login</Link></li>
+                        <li><Link to='/skills'>Browse skills</Link></li>
                     </ul>
                 }
             </nav>
