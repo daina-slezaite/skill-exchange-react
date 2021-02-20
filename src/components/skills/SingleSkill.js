@@ -6,13 +6,17 @@ import 'reactjs-popup/dist/index.css';
 
 export default class SingleSkill extends Component {
 
-    state = {}
+    constructor(props) {
+        super(props);
+        this.state = {}
+    }
 
     getSingleSkill() {
         axios.get(`http://localhost:5000/api/skills/${this.props.match.params.skillId}`, {withCredentials: true})
             .then(response => {
                 const fetchedSkill = response.data;
                 this.setState(fetchedSkill);
+                console.log(this.state);
             });
     } 
 
@@ -21,6 +25,7 @@ export default class SingleSkill extends Component {
             .then(response => {
                 const fetchedSkill = response.data;
                 this.setState(fetchedSkill);
+                
             });
     } 
 
