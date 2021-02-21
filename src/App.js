@@ -40,12 +40,12 @@ export default class App extends Component {
   render() {
     return (
       <div className="App">
-      <Navbar userInSession={this.state.loggedInUser} />
+      <Navbar userInSession={this.state.loggedInUser} setUser={this.setCurrentUser} />
       <Switch>
         <Route path='/login' render={props => <Login {...props} setUser={this.setCurrentUser} />} />
         <Route path='/signup' render={props => <Signup {...props} setUser={this.setCurrentUser} />} />
-        <Route exact path='/skills' render={() => <AllSkills userInSession={this.state.loggedInUser}/>} />
-        <Route exact path='/skills/:skillId' render={props => <SingleSkill {...props} />} />
+        <Route exact path='/skills' render={props => <AllSkills {...props} userInSession={this.state.loggedInUser} setUser={this.setCurrentUser} />} />
+        <Route exact path='/skills/:skillId' render={props => <SingleSkill {...props} userInSession={this.state.loggedInUser} />} />
         {this.state.loggedInUser && 
         <Route exact path='/my-skills' render={() => <MySkills />} />
         }

@@ -16,7 +16,6 @@ export default class SingleSkill extends Component {
             .then(response => {
                 const fetchedSkill = response.data;
                 this.setState(fetchedSkill);
-                console.log(this.state);
             });
     } 
 
@@ -25,7 +24,6 @@ export default class SingleSkill extends Component {
             .then(response => {
                 const fetchedSkill = response.data;
                 this.setState(fetchedSkill);
-                
             });
     } 
 
@@ -38,9 +36,11 @@ export default class SingleSkill extends Component {
             <div>
                 <h2>Title: {this.state.title}</h2>
                 <h4>Description: {this.state.description}</h4>
-                <Popup trigger={<button> Edit my skill </button>} modal>
-                    <EditSkill currentSkill={this.state} refreshSkill={(response) => this.getUpdatedSkill(response)} />
-                </Popup>
+                {this.props.userInSession && this.props.userInSession._id == this.state.user &&
+                    <Popup trigger={<button> Edit my skill </button>} modal>
+                        <EditSkill currentSkill={this.state} refreshSkill={(response) => this.getUpdatedSkill(response)} />
+                    </Popup>
+                }
             </div>
         )
     }

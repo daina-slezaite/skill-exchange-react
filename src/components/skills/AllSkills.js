@@ -8,7 +8,8 @@ export default class AllSkills extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            allSkills: []
+            allSkills: [],
+            favSkills: this.props.userInSession ? this.props.userInSession.favoriteSkills : []
         }
     }
 
@@ -16,7 +17,7 @@ export default class AllSkills extends Component {
         axios.get('http://localhost:5000/api/skills', {withCredentials: true})
             .then(response => {
                 this.setState({
-                    allSkills: response.data
+                    allSkills: response.data,
                 });
             });
     }
@@ -29,7 +30,8 @@ export default class AllSkills extends Component {
         const favoriteSkill = singleSkill;
         axios.post(`http://localhost:5000/api/skills/${singleSkill._id}/to-favorites`, {favoriteSkill}, {withCredentials: true})
             .then(response => {
-               console.log(response);
+                this.setState({favSkills: response.data.favoriteSkills})
+                this.getAllSkills();
             })
             .catch(error => console.log(error));
     }
@@ -44,7 +46,7 @@ export default class AllSkills extends Component {
                         <li key={skill._id}><Link to={`/skills/${skill._id}`}>{skill.title}</Link></li>
                         {this.props.userInSession &&
                         <button
-                        style={this.props.userInSession.favoriteSkills.includes(skill._id) ? {backgroundColor: 'red'} : {backgroundColor: 'white'}}
+                        style={this.state.favSkills.includes(skill._id) ? {backgroundColor: 'red'} : {backgroundColor: 'white'}}
                         onClick={(singleSkill) => this.addToFavorites(skill)} >
                         ❤
                         </button>}
