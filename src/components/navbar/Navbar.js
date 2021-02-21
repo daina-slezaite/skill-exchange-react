@@ -26,7 +26,7 @@ export default class Navbar extends Component {
                     <ul style={{listStyle: 'none', display: 'flex'}}> 
                         <li><Link to='/skills'>Browse skills</Link></li>
                         <li>
-                            <Link to='/logout'>
+                            <Link to='/'>
                                 <button onClick={this.logoutUser}>Logout</button>
                             </Link>
                         </li>

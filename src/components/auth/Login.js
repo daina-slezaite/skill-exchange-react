@@ -27,6 +27,7 @@ export default class Login extends Component {
                     password: ''
                 });
                 this.props.setUser(response);
+                this.props.history.push('/skills')
             })
             .catch(error => {
                 console.log(error);
