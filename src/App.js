@@ -8,6 +8,7 @@ import AuthService from './components/services/AuthService';
 import AllSkills from './components/skills/AllSkills';
 import SingleSkill from './components/skills/SingleSkill';
 import MySkills from './components/skills/MySkills';
+import Profile from './components/user/Profile';
 
 export default class App extends Component {
 
@@ -49,6 +50,7 @@ export default class App extends Component {
         {this.state.loggedInUser && 
         <Route exact path='/my-skills' render={() => <MySkills />} />
         }
+        <Route exact path='/profile' render={props => <Profile {...props} userInSession={this.state.loggedInUser} />} />
       </Switch>
     </div>
     )

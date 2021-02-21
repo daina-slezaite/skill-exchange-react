@@ -32,6 +32,7 @@ export default class Navbar extends Component {
                             </Link>
                         </li>
                         <li><Link to='/my-skills'>My skills</Link></li>
+                        <li><Link to='/profile'>My profile</Link></li>
                     </ul>
                     :
                     <ul style={{listStyle: 'none', display: 'flex'}}> 
