@@ -27,13 +27,26 @@ export default class MySkills extends Component {
         this.getMySkills();
     }
 
+    handleDelete(skillId) {
+        axios.delete(`http://localhost:5000/api/skills/${skillId}`)
+            .then(() => {
+                this.getMySkills();
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }
+
     render() {
         return (
             <div>
                 <ul>
                 {this.state.mySkills.map(skill => {
                     return(
+                        <React.Fragment>
                         <li key={skill._id}><Link to={`/skills/${skill._id}`}>{skill.title}</Link></li>
+                        <button onClick={(skillId)=> this.handleDelete(skill._id)}>Delete</button>
+                        </React.Fragment>
                     )
                 })}
                 </ul>
