@@ -9,6 +9,7 @@ import AllSkills from './components/skills/AllSkills';
 import SingleSkill from './components/skills/SingleSkill';
 import MySkills from './components/skills/MySkills';
 import Profile from './components/user/Profile';
+import ProtectedRoute from './components/auth/ProtectedRoute';
 
 export default class App extends Component {
 
@@ -45,12 +46,28 @@ export default class App extends Component {
       <Switch>
         <Route path='/login' render={props => <Login {...props} setUser={this.setCurrentUser} />} />
         <Route path='/signup' render={props => <Signup {...props} setUser={this.setCurrentUser} />} />
-        <Route exact path='/skills' render={props => <AllSkills {...props} userInSession={this.state.loggedInUser} setUser={this.setCurrentUser} />} />
-        <Route exact path='/skills/:skillId' render={props => <SingleSkill {...props} userInSession={this.state.loggedInUser} />} />
-        {this.state.loggedInUser && 
+        {/* <Route exact path='/skills' render={props => <AllSkills {...props} userInSession={this.state.loggedInUser} setUser={this.setCurrentUser} />} /> */}
+        {/* <Route exact path='/skills/:skillId' render={props => <SingleSkill {...props} userInSession={this.state.loggedInUser} />} /> */}
+        {/* {this.state.loggedInUser && 
         <Route exact path='/my-skills' render={() => <MySkills />} />
-        }
-        <Route exact path='/profile' render={props => <Profile {...props} userInSession={this.state.loggedInUser} />} />
+        } */}
+        <ProtectedRoute
+          user={this.state.loggedInUser}
+          exact path='/skills'
+          component={AllSkills} />
+        <ProtectedRoute
+          user={this.state.loggedInUser}
+          exact path='/skills/:skillId'
+          component={SingleSkill} />
+        <ProtectedRoute
+          user={this.state.loggedInUser}
+          exact path='/my-skills'
+          component={MySkills} />
+        <ProtectedRoute
+          user={this.state.loggedInUser}
+          exact path='/profile'
+          component={Profile} />
+        {/* <Route exact path='/profile' render={props => <Profile {...props} userInSession={this.state.loggedInUser} />} /> */}
       </Switch>
     </div>
     )
