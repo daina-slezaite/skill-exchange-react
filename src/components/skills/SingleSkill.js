@@ -8,7 +8,7 @@ export default class SingleSkill extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {displayContactDetails: false}
     }
 
     getSingleSkill() {
@@ -31,6 +31,10 @@ export default class SingleSkill extends Component {
         this.getSingleSkill();
     }
 
+    displayContactInfo = () => {
+        this.setState({displayContactDetails: !this.state.displayContactDetails})
+    }
+
     render() {
         return (
             <div>
@@ -41,6 +45,12 @@ export default class SingleSkill extends Component {
                         <EditSkill currentSkill={this.state} refreshSkill={(response) => this.getUpdatedSkill(response)} />
                     </Popup>
                 }
+
+                {this.props.userInSession && this.props.userInSession._id !== this.state.user &&
+                
+                <button onClick={this.displayContactInfo}>Swap</button>
+                }
+                {this.state.displayContactDetails && <p>{this.state.user}</p>}
             </div>
         )
     }
