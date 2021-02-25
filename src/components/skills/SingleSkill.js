@@ -8,7 +8,7 @@ export default class SingleSkill extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {displayContactDetails: false}
+        this.state = {displayContactDetails: false, contactEmail: ''}
     }
 
     getSingleSkill() {
@@ -32,7 +32,16 @@ export default class SingleSkill extends Component {
     }
 
     displayContactInfo = () => {
-        this.setState({displayContactDetails: !this.state.displayContactDetails})
+        const skillId = this.state._id;
+        const userId = this.state.user;
+        axios.get(`http://localhost:5000/api/skills/${skillId}/${userId}`, {withCredentials: true})
+            .then(response => {
+                this.setState({
+                    displayContactDetails: !this.state.displayContactDetails,
+                    contactEmail: response.data.email
+                });
+            })
+            .catch(error => console.log(error));
     }
 
     render() {
@@ -50,7 +59,7 @@ export default class SingleSkill extends Component {
                 
                 <button onClick={this.displayContactInfo}>Swap</button>
                 }
-                {this.state.displayContactDetails && <p>{this.state.user}</p>}
+                {this.state.displayContactDetails && <p>{this.state.contactEmail}</p>}
             </div>
         )
     }
