@@ -43,8 +43,8 @@ export default class MySkills extends Component {
                 <ul>
                 {this.state.mySkills.map(skill => {
                     return(
-                        <React.Fragment>
-                        <li key={skill._id}><Link to={`/skills/${skill._id}`}>{skill.title}</Link></li>
+                        <React.Fragment key={skill._id}>
+                        <li><Link to={`/skills/${skill._id}`}>{skill.title}</Link></li>
                         <button onClick={(skillId)=> this.handleDelete(skill._id)}>Delete</button>
                         </React.Fragment>
                     )

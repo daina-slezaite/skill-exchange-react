@@ -3,15 +3,23 @@ import { Link } from 'react-router-dom'
 
 export default class Profile extends Component {
 
+   state = {loggedInUser: this.props.userInSession}
+
+    componentDidUpdate(prevProps) {
+        if(this.props.userInSession !== prevProps.userInSession) {
+            this.setState({loggedInUser: this.props.userInSession})
+        }
+    }
+
     render() {
         return (
             <div>
-                <p>Username: {this.props.userInSession.username}</p>
-                <p>Email: {this.props.userInSession.email}</p>
+                <p>Username: {this.state.loggedInUser.username}</p>
+                <p>Email: {this.state.loggedInUser.email}</p>
                 <Link to='/my-skills'>My skills</Link>
-                <h3>My favorite skills:</h3>
+                {/* <h3>My favorite skills:</h3>
                 <ul>
-                    {this.props.userInSession.favoriteSkills.map(favSkill => {
+                    {this.state.loggedInUser.favoriteSkills.map(favSkill => {
                         return(
                             <li key={favSkill._id}>
                                 <h4>{favSkill.title}</h4>
@@ -19,7 +27,7 @@ export default class Profile extends Component {
                             </li>
                         )
                     })}
-                </ul>
+                </ul> */}
             </div>
         )
     }

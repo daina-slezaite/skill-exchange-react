@@ -14,51 +14,37 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 export default class App extends Component {
 
   state = {
-    loggedInUser: null
+    loggedInUser: JSON.parse(localStorage.getItem('myUser'))
   }
 
   service = new AuthService();
 
   componentDidMount() {
-    if(this.state.loggedInUser === null) {
-      this.service.loggedin()
-        .then(response => {
-          this.setState({
-            loggedInUser: response
-          });
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    }
+    this.setState({ loggedInUser: JSON.parse(localStorage.getItem('myUser')) })
   }
 
   setCurrentUser = (user) => {
-    this.setState({
-      loggedInUser: user
-    });
+      localStorage.setItem('myUser', JSON.stringify(user));
+      this.setState({
+        loggedInUser: JSON.parse(localStorage.getItem('myUser'))
+      });
+  }
+
+  logUserOut = () => {
+    localStorage.removeItem('myUser');
+    localStorage.clear();
+    this.setState({loggedInUser: null});
   }
 
   render() {
     return (
       <div className="App">
-      <Navbar userInSession={this.state.loggedInUser} setUser={this.setCurrentUser} />
+      <Navbar userInSession={this.state.loggedInUser} setUser={this.setCurrentUser} removeSession={this.logUserOut} />
       <Switch>
         <Route path='/login' render={props => <Login {...props} setUser={this.setCurrentUser} />} />
         <Route path='/signup' render={props => <Signup {...props} setUser={this.setCurrentUser} />} />
-        {/* <Route exact path='/skills' render={props => <AllSkills {...props} userInSession={this.state.loggedInUser} setUser={this.setCurrentUser} />} /> */}
-        {/* <Route exact path='/skills/:skillId' render={props => <SingleSkill {...props} userInSession={this.state.loggedInUser} />} /> */}
-        {/* {this.state.loggedInUser && 
-        <Route exact path='/my-skills' render={() => <MySkills />} />
-        } */}
-        <ProtectedRoute
-          user={this.state.loggedInUser}
-          exact path='/skills'
-          component={AllSkills} />
-        <ProtectedRoute
-          user={this.state.loggedInUser}
-          exact path='/skills/:skillId'
-          component={SingleSkill} />
+        <Route exact path='/skills' render={props => <AllSkills {...props} userInSession={this.state.loggedInUser} setUser={this.setCurrentUser} />} />
+        <Route exact path='/skills/:skillId' render={props => <SingleSkill {...props} userInSession={this.state.loggedInUser} />} />
         <ProtectedRoute
           user={this.state.loggedInUser}
           exact path='/my-skills'
@@ -67,7 +53,6 @@ export default class App extends Component {
           user={this.state.loggedInUser}
           exact path='/profile'
           component={Profile} />
-        {/* <Route exact path='/profile' render={props => <Profile {...props} userInSession={this.state.loggedInUser} />} /> */}
       </Switch>
     </div>
     )

@@ -8,15 +8,18 @@ export default class Navbar extends Component {
 
     service = new AuthService();
 
-    componentWillReceiveProps(nextProps) {
-        this.setState({...this.state, loggedInUser: nextProps['userInSession']});
+    componentDidUpdate(prevProps) {
+        if(this.props.userInSession !== prevProps.userInSession) {
+            this.setState({loggedInUser: this.props.userInSession})
+        }
     }
 
     logoutUser = () => {
         this.service.logout()
             .then(() => {
                 this.setState({loggedInUser: null});
-                this.props.setUser(null);
+                // this.props.setUser(null);
+                this.props.removeSession();
             })
     }
 

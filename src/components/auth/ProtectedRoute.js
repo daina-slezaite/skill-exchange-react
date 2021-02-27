@@ -1,7 +1,14 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
-const protectedRoute = ({component: Component, user, ...rest}) => {
+const ProtectedRoute = ({component: Component, user, ...rest}) => {
+    useEffect(() => {
+        const loggedInUser = localStorage.getItem('myUser');
+        if (loggedInUser) {
+          user = JSON.parse(loggedInUser);
+        }
+    });
+
     return(
         <Route
             {...rest}
@@ -17,4 +24,4 @@ const protectedRoute = ({component: Component, user, ...rest}) => {
     )
 }
 
-export default protectedRoute;
+export default ProtectedRoute;

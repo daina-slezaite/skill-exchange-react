@@ -58,9 +58,17 @@ export default class AllSkills extends Component {
                 <ul>
                 {this.state.allSkills.map(skill => {
                     return(
-                        <React.Fragment>
-                        <li key={skill._id}><Link to={`/skills/${skill._id}`}>{skill.title}</Link></li>
+                        <React.Fragment key={skill._id}>
+                        <li><Link to={`/skills/${skill._id}`}>{skill.title}</Link></li>
                         {this.props.userInSession &&
+                        <React.Fragment>
+                        <button
+                        onClick={(singleSkill) => this.addToFavorites(skill)} >
+                        ❤
+                        </button>
+                        </React.Fragment>
+                        }
+                        {/* {this.props.userInSession &&
                         <React.Fragment>
                         <button
                         style={this.state.favSkills.includes(skill._id) ? {backgroundColor: 'red'} : {backgroundColor: 'white'}}
@@ -68,7 +76,7 @@ export default class AllSkills extends Component {
                         ❤
                         </button>
                         </React.Fragment>
-                        }
+                        } */}
                         </React.Fragment>
                     )
                 })}
