@@ -63,15 +63,7 @@ export default class SingleSkill extends Component {
                 <React.Fragment>
                     <p>{this.state.contact.username}</p>
                     <p>{this.state.contact.email}</p>
-                    {this.state.contact.wantedSkills && this.state.contact.wantedSkills.map(wantedSkill => {
-                        return (
-                            <React.Fragment key={this.state.contact._id}>
-                                <p>{wantedSkill.firstSkill}</p>
-                                <p>{wantedSkill.secondSkill}</p>
-                                <p>{wantedSkill.thirdSkill}</p>
-                            </React.Fragment>
-                        )
-                    })}
+                    <p>{this.state.contact.description}</p>
                 </React.Fragment>
                 }
             </div>
