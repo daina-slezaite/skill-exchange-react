@@ -8,7 +8,7 @@ export default class SingleSkill extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {displayContactDetails: false, contactEmail: ''}
+        this.state = {displayContactDetails: false, contact: ''}
     }
 
     getSingleSkill() {
@@ -38,7 +38,7 @@ export default class SingleSkill extends Component {
             .then(response => {
                 this.setState({
                     displayContactDetails: !this.state.displayContactDetails,
-                    contactEmail: response.data.email
+                    contact: response.data
                 });
             })
             .catch(error => console.log(error));
@@ -59,7 +59,21 @@ export default class SingleSkill extends Component {
                 
                 <button onClick={this.displayContactInfo}>Swap</button>
                 }
-                {this.state.displayContactDetails && <p>{this.state.contactEmail}</p>}
+                {this.state.displayContactDetails &&
+                <React.Fragment>
+                    <p>{this.state.contact.username}</p>
+                    <p>{this.state.contact.email}</p>
+                    {this.state.contact.wantedSkills && this.state.contact.wantedSkills.map(wantedSkill => {
+                        return (
+                            <React.Fragment key={this.state.contact._id}>
+                                <p>{wantedSkill.firstSkill}</p>
+                                <p>{wantedSkill.secondSkill}</p>
+                                <p>{wantedSkill.thirdSkill}</p>
+                            </React.Fragment>
+                        )
+                    })}
+                </React.Fragment>
+                }
             </div>
         )
     }
