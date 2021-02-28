@@ -14,7 +14,8 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 export default class App extends Component {
 
   state = {
-    loggedInUser: JSON.parse(localStorage.getItem('myUser'))
+    // loggedInUser: JSON.parse(localStorage.getItem('myUser'))
+    loggedInUser: null
   }
 
   service = new AuthService();
