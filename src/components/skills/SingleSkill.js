@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import EditSkill from './EditSkill';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
+import AddReview from '../reviews/AddReview';
 
 export default class SingleSkill extends Component {
 
@@ -56,8 +57,10 @@ export default class SingleSkill extends Component {
                 }
 
                 {this.props.userInSession && this.props.userInSession._id !== this.state.user &&
-                
-                <button onClick={this.displayContactInfo}>Swap</button>
+                <React.Fragment>
+                    <AddReview skill={this.state._id} />
+                    <button onClick={this.displayContactInfo}>Swap</button>
+                </React.Fragment>
                 }
                 {this.state.displayContactDetails &&
                 <React.Fragment>
