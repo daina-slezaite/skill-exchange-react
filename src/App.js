@@ -10,6 +10,7 @@ import SingleSkill from './components/skills/SingleSkill';
 import MySkills from './components/skills/MySkills';
 import Profile from './components/user/Profile';
 import ProtectedRoute from './components/auth/ProtectedRoute';
+import ReviewList from './components/reviews/ReviewList';
 
 export default class App extends Component {
 
@@ -37,6 +38,10 @@ export default class App extends Component {
     this.setState({loggedInUser: null});
   }
 
+  getSingleSkill(skill) {
+    this.setState({foundSkill: skill});
+  }
+
   render() {
     return (
       <div className="App">
@@ -45,7 +50,8 @@ export default class App extends Component {
         <Route path='/login' render={props => <Login {...props} setUser={this.setCurrentUser} />} />
         <Route path='/signup' render={props => <Signup {...props} setUser={this.setCurrentUser} />} />
         <Route exact path='/skills' render={props => <AllSkills {...props} userInSession={this.state.loggedInUser} setUser={this.setCurrentUser} />} />
-        <Route exact path='/skills/:skillId' render={props => <SingleSkill {...props} userInSession={this.state.loggedInUser} />} />
+        <Route exact path='/skills/:skillId' render={props => <SingleSkill {...props} sendSkill={(skill) => this.getSingleSkill(skill)} userInSession={this.state.loggedInUser} />} />
+        <Route exact path='/skills/:skillId/reviews' render={props => <ReviewList {...props} skill={this.state.foundSkill._id} />} />
         <ProtectedRoute
           user={this.state.loggedInUser}
           exact path='/my-skills'

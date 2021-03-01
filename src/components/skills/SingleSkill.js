@@ -4,6 +4,8 @@ import EditSkill from './EditSkill';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import AddReview from '../reviews/AddReview';
+import ReviewList from '../reviews/ReviewList';
+import { Link } from 'react-router-dom';
 
 export default class SingleSkill extends Component {
 
@@ -17,6 +19,7 @@ export default class SingleSkill extends Component {
             .then(response => {
                 const fetchedSkill = response.data;
                 this.setState(fetchedSkill);
+                this.props.sendSkill(fetchedSkill);
             });
     } 
 
@@ -50,6 +53,8 @@ export default class SingleSkill extends Component {
             <div>
                 <h2>Title: {this.state.title}</h2>
                 <h4>Description: {this.state.description}</h4>
+                <p>Average review for this skill: </p>
+                <Link to={`/skills/${this.state._id}/reviews`}>See all reviews</Link>
                 {this.props.userInSession && this.props.userInSession._id == this.state.user &&
                     <Popup trigger={<button> Edit my skill </button>} modal>
                         <EditSkill currentSkill={this.state} refreshSkill={(response) => this.getUpdatedSkill(response)} />
