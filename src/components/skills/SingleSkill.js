@@ -74,9 +74,9 @@ export default class SingleSkill extends Component {
         this.getAllReviews();
         const ratings = this.state.reviews.map(review => {
             return review.rating;
-        })
-        const ratingsAvg = ratings.reduce((a,b) => a + b, 0) / ratings.length
-        this.setState({average: ratingsAvg})
+        });
+        const ratingsAvg = +(ratings.reduce((a,b) => a + b, 0) / ratings.length).toFixed(2);
+        this.setState({average: ratingsAvg});
     }
 
     render() {
