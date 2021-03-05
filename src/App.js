@@ -10,11 +10,11 @@ import SingleSkill from './components/skills/SingleSkill';
 import MySkills from './components/skills/MySkills';
 import Profile from './components/user/Profile';
 import ProtectedRoute from './components/auth/ProtectedRoute';
+import Home from './components/home/Home';
 
 export default class App extends Component {
 
   state = {
-    // loggedInUser: JSON.parse(localStorage.getItem('myUser'))
     loggedInUser: null
   }
 
@@ -37,15 +37,12 @@ export default class App extends Component {
     this.setState({loggedInUser: null});
   }
 
-  // getSingleSkill(skill) {
-  //   this.setState({foundSkill: skill});
-  // }
-
   render() {
     return (
       <div className="App">
       <Navbar userInSession={this.state.loggedInUser} setUser={this.setCurrentUser} removeSession={this.logUserOut} />
       <Switch>
+        <Route exact path='/' render={props => <Home {...props} />} />
         <Route path='/login' render={props => <Login {...props} setUser={this.setCurrentUser} />} />
         <Route path='/signup' render={props => <Signup {...props} setUser={this.setCurrentUser} />} />
         <Route exact path='/skills' render={props => <AllSkills {...props} userInSession={this.state.loggedInUser} setUser={this.setCurrentUser} />} />
