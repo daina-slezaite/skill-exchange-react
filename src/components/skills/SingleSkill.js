@@ -5,13 +5,18 @@ import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import AddReview from '../reviews/AddReview';
 import ReviewList from '../reviews/ReviewList';
-import { Link } from 'react-router-dom';
 
 export default class SingleSkill extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {displayContactDetails: false, contact: ''}
+        this.state = {
+            displayContactDetails: false,
+            contact: '',
+            displayAllReviews: false,
+            average: 0,
+            reviews: []
+        }
     }
 
     getSingleSkill() {
@@ -19,7 +24,7 @@ export default class SingleSkill extends Component {
             .then(response => {
                 const fetchedSkill = response.data;
                 this.setState(fetchedSkill);
-                this.props.sendSkill(fetchedSkill);
+                this.countAvg();
             });
     } 
 
@@ -28,6 +33,7 @@ export default class SingleSkill extends Component {
             .then(response => {
                 const fetchedSkill = response.data;
                 this.setState(fetchedSkill);
+                this.countAvg();
             });
     } 
 
@@ -48,13 +54,37 @@ export default class SingleSkill extends Component {
             .catch(error => console.log(error));
     }
 
+    displayReviewList = () => {
+        this.setState({displayAllReviews: !this.state.displayAllReviews})
+    }
+
+    displayAvg(response) {
+        this.setState({average: response})
+    }
+
+    getAllReviews = () => {
+        const skill = this.state._id;
+        axios.get(`http://localhost:5000/api/${skill}/reviews`)
+            .then(response => {
+                this.setState({reviews: response.data});
+            });
+    }
+
+    countAvg = () => {
+        this.getAllReviews();
+        const ratings = this.state.reviews.map(review => {
+            return review.rating;
+        })
+        const ratingsAvg = ratings.reduce((a,b) => a + b, 0) / ratings.length
+        this.setState({average: ratingsAvg})
+    }
+
     render() {
         return (
             <div>
                 <h2>Title: {this.state.title}</h2>
                 <h4>Description: {this.state.description}</h4>
-                <p>Average review for this skill: </p>
-                <Link to={`/skills/${this.state._id}/reviews`}>See all reviews</Link>
+                <p>Average review for this skill: {this.state.average}</p>
                 {this.props.userInSession && this.props.userInSession._id == this.state.user &&
                     <Popup trigger={<button> Edit my skill </button>} modal>
                         <EditSkill currentSkill={this.state} refreshSkill={(response) => this.getUpdatedSkill(response)} />
@@ -63,7 +93,6 @@ export default class SingleSkill extends Component {
 
                 {this.props.userInSession && this.props.userInSession._id !== this.state.user &&
                 <React.Fragment>
-                    <AddReview skill={this.state._id} />
                     <button onClick={this.displayContactInfo}>Swap</button>
                 </React.Fragment>
                 }
@@ -72,6 +101,13 @@ export default class SingleSkill extends Component {
                     <p>{this.state.contact.username}</p>
                     <p>{this.state.contact.email}</p>
                     <p>{this.state.contact.description}</p>
+                </React.Fragment>
+                }
+                <button onClick={this.displayReviewList}>See all reviews</button>
+                {this.state.displayAllReviews &&
+                <React.Fragment>
+                    <AddReview skill={this.state._id} updateSkill={response => {this.getUpdatedSkill(response)}}/>
+                    <ReviewList allReviews={this.state.reviews} skill={this.state._id} />
                 </React.Fragment>
                 }
             </div>

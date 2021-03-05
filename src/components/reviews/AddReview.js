@@ -17,13 +17,13 @@ export default class AddReview extends Component {
 
     handleFormSubmit = e => {
         e.preventDefault();
-        const comment = parseInt(this.state.comment);
-        const {rating} = this.state;
+        const rating = parseInt(this.state.rating);
+        const {comment} = this.state;
         const skill = this.props.skill;
         axios.post(`http://localhost:5000/api/${skill}/reviews`, {comment, rating, skill}, {withCredentials: true})
             .then(response => {
-                console.log(response);
                 this.setState({comment: '', rating: ''});
+                this.props.updateSkill(response);
             })
             .catch(error => console.log(error));
     }
