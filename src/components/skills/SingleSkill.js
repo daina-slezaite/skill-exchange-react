@@ -75,7 +75,7 @@ export default class SingleSkill extends Component {
         const ratings = this.state.reviews.map(review => {
             return review.rating;
         });
-        const ratingsAvg = +(ratings.reduce((a,b) => a + b, 0) / ratings.length).toFixed(2);
+        const ratingsAvg = +(ratings.reduce((a,b) => a + b, 0) / ratings.length).toFixed(2) || 'There are no reviews for this skill yet'
         this.setState({average: ratingsAvg});
     }
 
@@ -94,6 +94,7 @@ export default class SingleSkill extends Component {
                 {this.props.userInSession && this.props.userInSession._id !== this.state.user &&
                 <React.Fragment>
                     <button onClick={this.displayContactInfo}>Swap</button>
+                    <AddReview skill={this.state._id} updateSkill={response => {this.getUpdatedSkill(response)}}/>
                 </React.Fragment>
                 }
                 {this.state.displayContactDetails &&
@@ -106,7 +107,6 @@ export default class SingleSkill extends Component {
                 <button onClick={this.displayReviewList}>See all reviews</button>
                 {this.state.displayAllReviews &&
                 <React.Fragment>
-                    <AddReview skill={this.state._id} updateSkill={response => {this.getUpdatedSkill(response)}}/>
                     <ReviewList allReviews={this.state.reviews} skill={this.state._id} />
                 </React.Fragment>
                 }
