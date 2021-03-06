@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import AuthService from '../services/AuthService';
 
 export default class Signup extends Component {
@@ -40,6 +41,7 @@ export default class Signup extends Component {
 
     render() {
         return (
+            <React.Fragment>
             <form onSubmit={this.handleFormSubmit}>
                 <label>Email:</label>
                 <input type='text' name='email' value={this.state.email} onChange={this.handleInputChange} />
@@ -51,6 +53,8 @@ export default class Signup extends Component {
                 <textarea name='description' value={this.state.description} onChange={this.handleInputChange}></textarea>
                 <button type='submit'>Create account</button>
             </form>
+            <p>Have an account already? <Link to='/login'>Login here</Link></p>
+            </React.Fragment>
         )
     }
 }

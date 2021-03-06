@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import AuthService from '../services/AuthService';
 
 export default class Login extends Component {
@@ -36,6 +37,7 @@ export default class Login extends Component {
 
     render() {
         return (
+            <React.Fragment>
             <form onSubmit={this.handleFormSubmit}>
                 <label>Username:</label>
                 <input type='text' name='username' value={this.state.username} onChange={this.handleInputChange} />
@@ -43,6 +45,8 @@ export default class Login extends Component {
                 <input type='password' name='password' value={this.state.password} onChange={this.handleInputChange} />
                 <button type='submit'>Login</button>
             </form>
+            <p>Don't have an account yet? <Link to='/signup'>Register here</Link></p>
+            </React.Fragment>
         )
     }
 }
