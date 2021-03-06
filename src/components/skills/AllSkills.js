@@ -50,33 +50,43 @@ export default class AllSkills extends Component {
             })
     }
 
+    handleCategoryChange = e => {
+        this.getAllSkills();
+        this.setState({category: e.target.value});
+    }
+
+    handleCategoryFilter = e => {
+        e.preventDefault();
+        const filteredSkills = this.state.category === '' ? this.state.allSkills : this.state.allSkills.filter(skill => skill.category === this.state.category);
+        this.setState({allSkills: filteredSkills});
+    }
+
     render() {
         return (
             <div>
                 <label>Search skills:</label>
                 <input type='text' name='title' value={this.state.title} onChange={this.handleInputChange} />
+                <form onSubmit={this.handleCategoryFilter}>
+                    <label>Filter skills by category:</label>
+                    <select name='category' value={this.state.category} onChange={this.handleCategoryChange}>
+                        <option value="" defaultValue>All skills</option>
+                        <option value='Graphic Design'>Graphic Design</option>
+                        <option value='Languages'>Languages</option>
+                        <option value='Music'>Music</option>
+                        <option value='Illustration'>Illustration</option>
+                        <option value='Lifestyle'>Lifestyle</option>
+                        <option value='Photography & Video'>Photography & Video</option>
+                        <option value='Business'>Business</option>
+                        <option value='Writing'>Writing</option>
+                        <option value='Fine Art'>Fine Art</option>
+                    </select>
+                    <button type='submit'>Filter</button>
+                </form>
                 <ul>
                 {this.state.allSkills.map(skill => {
                     return(
                         <React.Fragment key={skill._id}>
                         <li><Link to={`/skills/${skill._id}`}>{skill.title}</Link></li>
-                        {this.props.userInSession &&
-                        <React.Fragment>
-                        <button
-                        onClick={(singleSkill) => this.addToFavorites(skill)} >
-                        ❤
-                        </button>
-                        </React.Fragment>
-                        }
-                        {/* {this.props.userInSession &&
-                        <React.Fragment>
-                        <button
-                        style={this.state.favSkills.includes(skill._id) ? {backgroundColor: 'red'} : {backgroundColor: 'white'}}
-                        onClick={(singleSkill) => this.addToFavorites(skill)} >
-                        ❤
-                        </button>
-                        </React.Fragment>
-                        } */}
                         </React.Fragment>
                     )
                 })}
