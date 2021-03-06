@@ -1,5 +1,6 @@
 import axios from 'axios';
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import UploadService from '../services/UploadService';
 
 export default class AddSkill extends Component {
 
@@ -8,9 +9,12 @@ export default class AddSkill extends Component {
         this.state = {
             title: '',
             description: '',
-            category: ''
+            category: '',
+            imageUrl: ''
         }
     }
+
+    service = new UploadService();
 
     handleInputChange = e => {
         const {name, value} = e.target;
@@ -21,18 +25,34 @@ export default class AddSkill extends Component {
 
     handleFormSubmit = e => {
         e.preventDefault();
+        const image = this.state.imageUrl;
         const title = this.state.title;
         const description = this.state.description;
         const category = this.state.category;
-        axios.post('http://localhost:5000/api/skills', {title, description, category}, {withCredentials: true})
+        axios.post('http://localhost:5000/api/skills', {title, description, category, image}, {withCredentials: true})
             .then(() => {
                 this.props.getAllMySkills();
                 this.setState({
                     title: '',
                     description: '',
-                    category: ''
+                    category: '',
+                    imageUrl: ''
                 })
             })
+            .catch(error => {
+                console.log(error);
+            })
+    }
+
+    handleFileUpload = e => {
+        const uploadData = new FormData();
+        uploadData.append('imageUrl', e.target.files[0]);
+
+        this.service.handleUpload(uploadData)
+            .then(response => {
+                this.setState({imageUrl: response.secure_url})
+            })
+            .catch(error => console.log(error));
     }
 
     render() {
@@ -58,6 +78,9 @@ export default class AddSkill extends Component {
 
                 <label>Describe your skill in one sentence:</label>
                 <input type='text' name='description' value={this.state.description} onChange={this.handleInputChange} />
+
+                <label>Upload an image:</label>
+                <input type='file' onChange={this.handleFileUpload} />
 
                 <button type='submit'>Publish my skill</button>
             </form>

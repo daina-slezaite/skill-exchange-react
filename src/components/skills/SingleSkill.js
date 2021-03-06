@@ -84,6 +84,7 @@ export default class SingleSkill extends Component {
             <div>
                 <h2>Title: {this.state.title}</h2>
                 <h4>Description: {this.state.description}</h4>
+                { this.state.imageUrl && <img src={this.state.imageUrl} alt={this.state.title} /> }
                 <p>Average review for this skill: {this.state.average}</p>
                 {this.props.userInSession && this.props.userInSession._id == this.state.user &&
                     <Popup trigger={<button> Edit my skill </button>} modal>
