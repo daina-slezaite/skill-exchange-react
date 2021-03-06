@@ -9,7 +9,6 @@ export default class AllSkills extends Component {
         super(props);
         this.state = {
             allSkills: [],
-            favSkills: this.props.userInSession ? this.props.userInSession.favoriteSkills : [],
             title: '',
             category: ''
         }
@@ -26,16 +25,6 @@ export default class AllSkills extends Component {
 
     componentDidMount() {
         this.getAllSkills();
-    }
-
-    addToFavorites(singleSkill) {
-        const favoriteSkill = singleSkill;
-        axios.post(`http://localhost:5000/api/skills/${singleSkill._id}/to-favorites`, {favoriteSkill}, {withCredentials: true})
-            .then(response => {
-                this.setState({favSkills: response.data.favoriteSkills})
-                this.getAllSkills();
-            })
-            .catch(error => console.log(error));
     }
 
     handleInputChange = e => {

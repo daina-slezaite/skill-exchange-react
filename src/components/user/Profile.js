@@ -12,7 +12,7 @@ export default class Profile extends Component {
     getUser() {
         axios.get('http://localhost:5000/api/my-profile', {withCredentials: true})
             .then(response => {
-                this.setState(response.data)
+                this.setState(response.data);
             });
     }
 
@@ -26,7 +26,7 @@ export default class Profile extends Component {
                 const fetchedProfile = response.data;
                 this.setState(fetchedProfile);
             });
-    } 
+    }
 
     render() {
         return (
@@ -38,17 +38,6 @@ export default class Profile extends Component {
                     <EditProfile myProfile={this.state} refreshProfile={this.getUpdatedProfile} />
                 </Popup>
                 <Link to='/my-skills'>My skills</Link>
-                {/* <h3>My favorite skills:</h3>
-                <ul>
-                    {this.state.loggedInUser.favoriteSkills.map(favSkill => {
-                        return(
-                            <li key={favSkill._id}>
-                                <h4>{favSkill.title}</h4>
-                                <p>{favSkill.category}</p>
-                            </li>
-                        )
-                    })}
-                </ul> */}
             </div>
         )
     }

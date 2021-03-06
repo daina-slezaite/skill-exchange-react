@@ -5,6 +5,7 @@ import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import AddReview from '../reviews/AddReview';
 import ReviewList from '../reviews/ReviewList';
+import FavoriteButton from '../skills/FavoriteButton';
 
 export default class SingleSkill extends Component {
 
@@ -15,7 +16,10 @@ export default class SingleSkill extends Component {
             contact: '',
             displayAllReviews: false,
             average: 0,
-            reviews: []
+            reviews: [],
+            heart: 'https://res.cloudinary.com/da6m0xppc/image/upload/v1615043364/heart_koddi2.svg',
+            heartOutline: 'https://res.cloudinary.com/da6m0xppc/image/upload/v1615043585/heart-outline_dpyfsv.svg',
+            favorites: []
         }
     }
 
@@ -39,6 +43,7 @@ export default class SingleSkill extends Component {
 
     componentDidMount() {
         this.getSingleSkill();
+        this.getFavorites();
     }
 
     displayContactInfo = () => {
@@ -79,10 +84,37 @@ export default class SingleSkill extends Component {
         this.setState({average: ratingsAvg});
     }
 
+    toggleFavorited = () => {
+        this.state.favorites.includes(this.state._id) ? this.removeFromFavorites() : this.addToFavorites()
+    }
+
+    getFavorites = () => {
+        axios.get('http://localhost:5000/api/my-profile', {withCredentials: true})
+            .then(response => {
+                this.setState({favorites: response.data.favoriteSkills})
+            });
+    }
+
+    addToFavorites = () => {
+        const skill = this.state._id;
+        axios.post(`http://localhost:5000/api/skills/${this.state._id}/favorites`, {skill}, {withCredentials: true})
+            .then(response => {
+                this.getFavorites();
+            })
+    }
+
+    removeFromFavorites = () => {
+        axios.delete(`http://localhost:5000/api/skills/${this.state._id}/favorites`, {withCredentials: true})
+            .then(response => {
+                this.getFavorites();
+            })
+    }
+
     render() {
         return (
             <div>
                 <h2>Title: {this.state.title}</h2>
+                <FavoriteButton icon={this.state.favorites.includes(this.state._id) ? this.state.heart : this.state.heartOutline} click={this.toggleFavorited} />
                 <h4>Description: {this.state.description}</h4>
                 { this.state.imageUrl && <img src={this.state.imageUrl} alt={this.state.title} /> }
                 <p>Average review for this skill: {this.state.average}</p>
