@@ -20,7 +20,8 @@ export default class AllSkills extends Component {
                 this.setState({
                     allSkills: response.data,
                 });
-            });
+            })
+            .catch(error => console.log(error))
     }
 
     componentDidMount() {
@@ -37,6 +38,7 @@ export default class AllSkills extends Component {
             .then(response => {
                 this.setState({allSkills: response.data})
             })
+            .catch(error => console.log(error))
     }
 
     handleCategoryChange = e => {

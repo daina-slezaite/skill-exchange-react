@@ -6,7 +6,6 @@ export default class EditProfile extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            // loggedInUser: this.props.myProfile,
             description: this.props.myProfile.description
         }
     }
@@ -20,7 +19,6 @@ export default class EditProfile extends Component {
     handleFormSubmit = e => {
         e.preventDefault();
         const description = this.state.description;
-        // axios.put(`http://localhost:5000/api/${this.state.loggedInUser._id}/edit`, {description}, {withCredentials: true})
         axios.put(`http://localhost:5000/api/edit-profile`, {description}, {withCredentials: true})            
             .then(() => {
                 this.setState({description: ''});

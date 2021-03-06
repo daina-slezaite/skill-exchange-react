@@ -29,7 +29,8 @@ export default class SingleSkill extends Component {
                 const fetchedSkill = response.data;
                 this.setState(fetchedSkill);
                 this.countAvg();
-            });
+            })
+            .catch(error => console.log(error))
     } 
 
     getUpdatedSkill(response) {
@@ -38,12 +39,13 @@ export default class SingleSkill extends Component {
                 const fetchedSkill = response.data;
                 this.setState(fetchedSkill);
                 this.countAvg();
-            });
+            })
+            .catch(error => console.log(error))
     } 
 
     componentDidMount() {
         this.getSingleSkill();
-        this.getFavorites();
+        {this.props.userInSession && this.getFavorites()}
     }
 
     displayContactInfo = () => {
@@ -72,7 +74,8 @@ export default class SingleSkill extends Component {
         axios.get(`http://localhost:5000/api/${skill}/reviews`)
             .then(response => {
                 this.setState({reviews: response.data});
-            });
+            })
+            .catch(error => console.log(error))
     }
 
     countAvg = () => {
@@ -92,15 +95,17 @@ export default class SingleSkill extends Component {
         axios.get('http://localhost:5000/api/my-profile', {withCredentials: true})
             .then(response => {
                 this.setState({favorites: response.data.favoriteSkills})
-            });
+            })
+            .catch(error => console.log(error))
     }
 
     addToFavorites = () => {
         const skill = this.state._id;
         axios.post(`http://localhost:5000/api/skills/${this.state._id}/favorites`, {skill}, {withCredentials: true})
-            .then(response => {
+            .then(() => {
                 this.getFavorites();
             })
+            .catch(error => console.log(error))
     }
 
     removeFromFavorites = () => {
@@ -108,13 +113,13 @@ export default class SingleSkill extends Component {
             .then(response => {
                 this.getFavorites();
             })
+            .catch(error => console.log(error))
     }
 
     render() {
         return (
             <div>
                 <h2>Title: {this.state.title}</h2>
-                <FavoriteButton icon={this.state.favorites.includes(this.state._id) ? this.state.heart : this.state.heartOutline} click={this.toggleFavorited} />
                 <h4>Description: {this.state.description}</h4>
                 { this.state.imageUrl && <img src={this.state.imageUrl} alt={this.state.title} /> }
                 <p>Average review for this skill: {this.state.average}</p>
@@ -126,6 +131,7 @@ export default class SingleSkill extends Component {
 
                 {this.props.userInSession && this.props.userInSession._id !== this.state.user &&
                 <React.Fragment>
+                    <FavoriteButton icon={this.state.favorites.includes(this.state._id) ? this.state.heart : this.state.heartOutline} click={this.toggleFavorited} />
                     <button onClick={this.displayContactInfo}>Swap</button>
                     <AddReview skill={this.state._id} updateSkill={response => {this.getUpdatedSkill(response)}}/>
                 </React.Fragment>

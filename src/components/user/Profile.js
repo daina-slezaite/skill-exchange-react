@@ -13,7 +13,8 @@ export default class Profile extends Component {
         axios.get('http://localhost:5000/api/my-profile', {withCredentials: true})
             .then(response => {
                 this.setState(response.data);
-            });
+            })
+            .catch(error => console.log(error))
     }
 
     componentDidMount() {
@@ -25,7 +26,8 @@ export default class Profile extends Component {
             .then(response => {
                 const fetchedProfile = response.data;
                 this.setState(fetchedProfile);
-            });
+            })
+            .catch(error => console.log(error))
     }
 
     render() {

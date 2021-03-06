@@ -18,9 +18,9 @@ export default class Navbar extends Component {
         this.service.logout()
             .then(() => {
                 this.setState({loggedInUser: null});
-                // this.props.setUser(null);
                 this.props.removeSession();
             })
+            .catch(error => console.log(error))
     }
 
     render() {

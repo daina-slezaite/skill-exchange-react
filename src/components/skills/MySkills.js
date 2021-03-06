@@ -20,7 +20,8 @@ export default class MySkills extends Component {
                 this.setState({
                     mySkills: response.data
                 });
-            });
+            })
+            .catch(error => console.log(error))
     }
 
     componentDidMount() {
