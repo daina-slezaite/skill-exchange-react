@@ -1,0 +1,38 @@
+$textColor: rgb(11,10,10);
+$secondaryTextColor: rgb(235,99,91);
+$borderColor: rgb(142,136,138);
+$buttonPadding: 5px 15px;
+$buttonRadius: 6px;
+$font: 'Poppins', sans-serif;
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    input, textarea {
+        border: none;
+        border-bottom: 2px solid $secondaryTextColor;
+        margin-bottom: 15px;
+        padding-bottom: 15px;
+    }
+
+    button {
+        font-family: $font;
+        color: $textColor;
+        border: 1px solid $borderColor;
+        border-radius: $buttonRadius;
+        text-decoration: none;
+        padding: $buttonPadding;
+        background-color: white;
+
+        &:hover {
+            font-weight: bold;
+            color: $secondaryTextColor;
+        }
+    }
+}
+
+p {
+    text-align: center;
+}
