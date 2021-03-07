@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import AuthService from '../services/AuthService';
 import {Link} from 'react-router-dom';
+import './styling.scss';
 
 export default class Navbar extends Component {
 
@@ -25,25 +26,22 @@ export default class Navbar extends Component {
 
     render() {
         return (
-            <nav>
+            <nav className='navbar'>
+                <img src='https://res.cloudinary.com/da6m0xppc/image/upload/v1615121354/skill-swap_yik8gn.svg' alt='Logo' />
+                <div className='navbar-links'>
                 {this.state.loggedInUser ? 
-                    <ul style={{listStyle: 'none', display: 'flex'}}> 
-                        <li><Link to='/skills'>Browse skills</Link></li>
-                        <li>
-                            <Link to='/'>
-                                <button onClick={this.logoutUser}>Logout</button>
-                            </Link>
-                        </li>
+                    <ul>
                         <li><Link to='/my-skills'>My skills</Link></li>
                         <li><Link to='/profile'>My profile</Link></li>
+                        <li><Link to='/'><button onClick={this.logoutUser}>Logout</button></Link></li>
                     </ul>
                     :
-                    <ul style={{listStyle: 'none', display: 'flex'}}> 
+                    <ul> 
                         <li><Link to='/signup'>Signup</Link></li>
                         <li><Link to='/login'>Login</Link></li>
-                        <li><Link to='/skills'>Browse skills</Link></li>
                     </ul>
                 }
+                </div>
             </nav>
         )
     }

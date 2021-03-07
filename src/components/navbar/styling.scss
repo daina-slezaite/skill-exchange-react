@@ -1,0 +1,36 @@
+$textColor: rgb(11,10,10);
+$hoverTextColor: rgb(235,99,91);
+$borderColor: rgb(142,136,138);
+$buttonPadding: 5px 15px;
+$buttonRadius: 6px;
+$margin: 0 10px;
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: $margin;
+
+    ul {
+        list-style: none;
+        display: flex;
+    }
+
+    a {
+        color: $textColor;
+        border: 1px solid $borderColor;
+        border-radius: $buttonRadius;
+        margin-left: 10px;
+        text-decoration: none;
+        padding: $buttonPadding;
+
+        &:hover {
+            font-weight: bold;
+            color: $hoverTextColor;
+        }
+    }
+
+    img {
+        width: 150px;
+    }
+}

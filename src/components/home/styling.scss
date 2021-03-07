@@ -1,0 +1,34 @@
+$textColor: rgb(11,10,10);
+$hoverTextColor: rgb(235,99,91);
+$borderColor: rgb(142,136,138);
+$buttonPadding: 5px 15px;
+$buttonRadius: 6px;
+
+.home-section {
+    text-align: center;
+    color: $textColor;
+
+    img {
+        width: 45%;
+        margin-top: -20px;
+    }
+
+    div {
+        display: flex;
+        justify-content: center;
+    }
+
+    a {
+        color: $textColor;
+        text-decoration: none;
+        padding: $buttonPadding;
+        border: 1px solid $borderColor;
+        border-radius: $buttonRadius;
+        margin-left: 10px;
+
+        &:hover {
+            font-weight: bold;
+            color: $hoverTextColor;
+        }
+    }
+}
