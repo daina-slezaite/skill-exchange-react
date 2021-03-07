@@ -1,0 +1,42 @@
+$font: 'Poppins', sans-serif;
+$textColor: rgb(11,10,10);
+$secondaryTextColor: rgb(235,99,91);
+$borderColor: rgb(142,136,138);
+$buttonPadding: 5px 15px;
+$buttonRadius: 6px;
+$margin: 0 10px;
+
+.add-skill {
+    display: flex;
+    flex-direction: column;
+    padding: 30px 50px;
+
+    input, select {
+        font-family: $font;
+        border: none;
+        border-bottom: 2px solid $secondaryTextColor;
+    }
+
+    input:focus,
+    select:focus {
+        outline: none;
+    }
+
+    button {
+        font-family: $font;
+        color: $textColor;
+        border: 1px solid $borderColor;
+        border-radius: $buttonRadius;
+        text-decoration: none;
+        padding: $buttonPadding;
+        background-color: white;
+        margin-top: 15px;
+
+        &:hover {
+            font-weight: bold;
+            color: $secondaryTextColor;
+        }
+    }
+
+    
+}

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { Component } from 'react';
 import UploadService from '../services/UploadService';
+import './Addskill.scss';
 
 export default class AddSkill extends Component {
 
@@ -57,33 +58,33 @@ export default class AddSkill extends Component {
 
     render() {
         return (
-            <form onSubmit={this.handleFormSubmit}>
-                <label>Give a name to your skill:</label>
-                <input type='text' name='title' value={this.state.title} onChange={this.handleInputChange} />
+                <form className='add-skill' onSubmit={this.handleFormSubmit}>
+                    <label>Give a name to your skill:</label>
+                    <input type='text' name='title' value={this.state.title} onChange={this.handleInputChange} />
 
-                <label>Choose a category:
-                    <select name='category' value={this.state.category} onChange={this.handleInputChange}>
-                        <option value="" defaultValue>Select your option</option>
-                        <option value='Graphic Design'>Graphic Design</option>
-                        <option value='Languages'>Languages</option>
-                        <option value='Music'>Music</option>
-                        <option value='Illustration'>Illustration</option>
-                        <option value='Lifestyle'>Lifestyle</option>
-                        <option value='Photography & Video'>Photography & Video</option>
-                        <option value='Business'>Business</option>
-                        <option value='Writing'>Writing</option>
-                        <option value='Fine Art'>Fine Art</option>
-                    </select>
-                </label>
+                    <label>Choose a category:
+                        <select name='category' value={this.state.category} onChange={this.handleInputChange}>
+                            <option value="" defaultValue>Select your option</option>
+                            <option value='Graphic Design'>Graphic Design</option>
+                            <option value='Languages'>Languages</option>
+                            <option value='Music'>Music</option>
+                            <option value='Illustration'>Illustration</option>
+                            <option value='Lifestyle'>Lifestyle</option>
+                            <option value='Photography & Video'>Photography & Video</option>
+                            <option value='Business'>Business</option>
+                            <option value='Writing'>Writing</option>
+                            <option value='Fine Art'>Fine Art</option>
+                        </select>
+                    </label>
 
-                <label>Describe your skill in one sentence:</label>
-                <input type='text' name='description' value={this.state.description} onChange={this.handleInputChange} />
+                    <label>Describe your skill in one sentence:</label>
+                    <input type='text' name='description' value={this.state.description} onChange={this.handleInputChange} />
 
-                <label>Upload an image:</label>
-                <input type='file' onChange={this.handleFileUpload} />
+                    <label>Upload an image:</label>
+                    <input type='file' onChange={this.handleFileUpload} />
 
-                <button type='submit'>Publish my skill</button>
-            </form>
+                    <button type='submit'>Publish my skill</button>
+                </form>
         )
     }
 }

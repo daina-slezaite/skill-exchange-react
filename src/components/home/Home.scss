@@ -1,5 +1,5 @@
 $textColor: rgb(11,10,10);
-$hoverTextColor: rgb(235,99,91);
+$secondaryTextColor: rgb(235,99,91);
 $borderColor: rgb(142,136,138);
 $buttonPadding: 5px 15px;
 $buttonRadius: 6px;
@@ -9,7 +9,7 @@ $buttonRadius: 6px;
     color: $textColor;
 
     img {
-        width: 45%;
+        max-width: 600px;
         margin-top: -20px;
     }
 
@@ -28,7 +28,7 @@ $buttonRadius: 6px;
 
         &:hover {
             font-weight: bold;
-            color: $hoverTextColor;
+            color: $secondaryTextColor;
         }
     }
 }

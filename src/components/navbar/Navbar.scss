@@ -1,15 +1,17 @@
+$font: 'Poppins', sans-serif;
 $textColor: rgb(11,10,10);
-$hoverTextColor: rgb(235,99,91);
+$secondaryTextColor: rgb(235,99,91);
 $borderColor: rgb(142,136,138);
 $buttonPadding: 5px 15px;
 $buttonRadius: 6px;
 $margin: 0 10px;
 
 .navbar {
+    margin: 0 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: $margin;
+    // margin: $margin;
 
     ul {
         list-style: none;
@@ -20,17 +22,21 @@ $margin: 0 10px;
         color: $textColor;
         border: 1px solid $borderColor;
         border-radius: $buttonRadius;
-        margin-left: 10px;
         text-decoration: none;
         padding: $buttonPadding;
 
         &:hover {
             font-weight: bold;
-            color: $hoverTextColor;
+            color: $secondaryTextColor;
         }
     }
 
-    img {
-        width: 150px;
+    .navbar-logo {
+        max-width: 150px;
+        margin-left: -20px;
+    }
+
+    .logout-button {
+        width: 15px;
     }
 }

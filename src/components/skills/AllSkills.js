@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import 'reactjs-popup/dist/index.css';
+import './AllSkills.scss';
 
 export default class AllSkills extends Component {
 
@@ -54,10 +55,16 @@ export default class AllSkills extends Component {
 
     render() {
         return (
-            <div>
-                <label>Search skills:</label>
-                <input type='text' name='title' value={this.state.title} onChange={this.handleInputChange} />
-                <form onSubmit={this.handleCategoryFilter}>
+            <div className='skills-list'>
+                <div className='skills-list-header'>
+                    <h1>Skills</h1>
+                    <div className='search-form'>
+                        <label>Search skills:</label>
+                        <input type='text' name='title' value={this.state.title} onChange={this.handleInputChange} />
+                    </div>
+                </div>
+                <hr />
+                {/* <form className='filter-form' onSubmit={this.handleCategoryFilter}>
                     <label>Filter skills by category:</label>
                     <select name='category' value={this.state.category} onChange={this.handleCategoryChange}>
                         <option value="" defaultValue>All skills</option>
@@ -72,13 +79,14 @@ export default class AllSkills extends Component {
                         <option value='Fine Art'>Fine Art</option>
                     </select>
                     <button type='submit'>Filter</button>
-                </form>
+                </form> */}
                 <ul>
                 {this.state.allSkills.map(skill => {
                     return(
-                        <React.Fragment key={skill._id}>
+                        <div className='skill-card' key={skill._id}>
                         <li><Link to={`/skills/${skill._id}`}>{skill.title}</Link></li>
-                        </React.Fragment>
+                        <p>{skill.category}</p>
+                        </div>
                     )
                 })}
                 </ul>

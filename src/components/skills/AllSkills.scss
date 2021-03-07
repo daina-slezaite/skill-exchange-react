@@ -1,0 +1,74 @@
+$font: 'Poppins', sans-serif;
+$textColor: rgb(11,10,10);
+$secondaryTextColor: rgb(235,99,91);
+$borderColor: rgb(142,136,138);
+$buttonPadding: 5px 15px;
+$buttonRadius: 6px;
+$margin: 0 10px;
+
+.skills-list-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.filter-form {
+    button {
+        font-family: $font;
+        color: $textColor;
+        border: 1px solid $borderColor;
+        border-radius: $buttonRadius;
+        text-decoration: none;
+        padding: $buttonPadding;
+        background-color: white;
+
+        &:hover {
+            font-weight: bold;
+            color: $secondaryTextColor;
+        }
+    }
+}
+
+.search-form {
+    display: flex;
+
+    input {
+        font-family: $font;
+        border: none;
+        border-bottom: 2px solid $secondaryTextColor;
+    }
+
+    input:focus {
+        outline: none;
+    }
+}
+
+.skills-list {
+    margin: 0 20px;
+
+    ul {
+        list-style: none;
+        margin-left: -40px;
+    }
+
+    a {
+        text-decoration: none;
+        color: $textColor;
+
+        &:hover {
+            font-weight: bold;
+            color: $secondaryTextColor;
+        }
+    }
+
+    p {
+        font-size: 0.8em;
+        color: $secondaryTextColor;
+    }
+
+    .skill-card {
+        border: 1px solid $textColor;
+        border-radius: $buttonRadius;
+        margin-bottom: 10px;
+    }
+}

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import AuthService from '../services/AuthService';
-import './styling.scss';
+import './Auth.scss';
 
 export default class Signup extends Component {
 
@@ -42,8 +42,8 @@ export default class Signup extends Component {
 
     render() {
         return (
-            <div className='auth-form'>
-                <form onSubmit={this.handleFormSubmit}>
+            <div className='auth-component'>
+                <form className='auth-form' onSubmit={this.handleFormSubmit}>
                     <label>Email:</label>
                     <input type='text' name='email' value={this.state.email} onChange={this.handleInputChange} />
                     <label>Username:</label>
