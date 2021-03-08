@@ -1,0 +1,14 @@
+$backgroundColor: rgb(233,233,233);
+$textColor: rgb(11,10,10);
+
+.footer {
+    height: 70px;
+    flex-shrink: 0;
+    background-color: $backgroundColor;
+    color: $textColor;
+
+    p {
+        padding: 6px 0;
+        text-align: center;
+    }
+}
