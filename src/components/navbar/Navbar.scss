@@ -4,10 +4,10 @@ $secondaryTextColor: rgb(235,99,91);
 $borderColor: rgb(142,136,138);
 $buttonPadding: 5px 15px;
 $buttonRadius: 6px;
-$margin: 0 10px;
+$margin: 0 20px;
 
 .navbar {
-    margin: 0 20px;
+    margin: $margin;
     display: flex;
     align-items: center;
     justify-content: space-between;
