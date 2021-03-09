@@ -166,12 +166,19 @@ export default class SingleSkill extends Component {
                 </div>
                 {/* { this.state.imageUrl && <img src={this.state.imageUrl} alt={this.state.title} /> } */}
                 <div className='column'>
+                    <h2>Skill reviews</h2>
 
+                    {this.state.reviews.length === 0 && 
+                    <React.Fragment>
+                        <p>There are no reviews for this skill yet</p>
+                        <hr />
+                    </React.Fragment>
+                    }
                 {this.state.reviews.length > 0 &&
+                <React.Fragment>
+                <p>{this.state.average} average based on {this.state.reviews.length} reviews</p>
+                <hr />
                 <div className='rating-card'>
-                    <h2>Skill ratings</h2>
-                    <p>{this.state.average} average based on {this.state.reviews.length} reviews</p>
-                    <hr />
                     <div className="row">
                         <div className="side">
                             <div>5 star</div>
@@ -231,12 +238,13 @@ export default class SingleSkill extends Component {
                     </div>
                         
                     <button onClick={this.displayReviewList}>See all reviews</button>
-                    {this.props.userInSession && this.props.userInSession._id !== this.state.user &&
+                </div>
+                </React.Fragment>
+                }
+                {this.props.userInSession && this.props.userInSession._id !== this.state.user &&
                     <React.Fragment>
                         <AddReview skill={this.state._id} updateSkill={response => {this.getUpdatedSkill(response)}}/>
                     </React.Fragment>}
-                </div>
-                }
                 {this.state.displayAllReviews &&
                     <React.Fragment>
                         <ReviewList allReviews={this.state.reviews} skill={this.state._id} />

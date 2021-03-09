@@ -32,7 +32,7 @@ export default class AddReview extends Component {
     render() {
         return (
             <React.Fragment>
-                <h3>Your review:</h3>
+                <h3>Add review</h3>
                 <form className='add-review' onSubmit={this.handleFormSubmit}>
                     <label>Comment your experience:</label>
                     <textarea onChange={this.handleInputChange} value={this.state.comment}></textarea>
