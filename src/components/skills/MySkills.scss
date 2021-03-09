@@ -1,0 +1,70 @@
+$font: 'Poppins', sans-serif;
+$textColor: rgb(11,10,10);
+$secondaryTextColor: rgb(235,99,91);
+$borderColor: rgb(142,136,138);
+$backgroundColor: rgb(233,233,233);
+$buttonPadding: 5px 15px;
+$buttonRadius: 6px;
+$margin: 0 20px;
+
+.my-skills {
+    margin: $margin;
+    background-color: $backgroundColor;
+    margin: $margin;
+    padding: 10px 20px;
+    border-radius: $buttonRadius;
+
+    h3 {
+        margin-bottom: -2px;
+    }
+
+    ul {
+        list-style: none;
+        margin-left: -40px;
+    }
+
+    a {
+        text-decoration: none;
+        color: $textColor;
+
+        &:hover {
+            font-weight: bold;
+            color: $secondaryTextColor;
+        }
+    }
+
+    div {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    img {
+        width: 30px;
+        border: 1px solid $borderColor;
+        border-radius: $buttonRadius;
+    }
+
+    button {
+        font-family: $font;
+        color: $textColor;
+        border: 1px solid $borderColor;
+        border-radius: $buttonRadius;
+        text-decoration: none;
+        padding: $buttonPadding;
+        background-color: white;
+        margin-top: 10px;
+
+        &:hover {
+            font-weight: bold;
+            color: $secondaryTextColor;
+        }
+    }
+
+    .my-skill-card {
+        background-color: white;
+        border-radius: $buttonRadius;
+        padding: 5px 20px;
+        margin-bottom: 15px;
+    }
+}
