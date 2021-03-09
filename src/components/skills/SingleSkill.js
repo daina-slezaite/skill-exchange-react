@@ -7,7 +7,6 @@ import AddReview from '../reviews/AddReview';
 import ReviewList from '../reviews/ReviewList';
 import FavoriteButton from '../skills/FavoriteButton';
 import './SingleSkill.scss';
-import { Redirect } from 'react-router-dom';
 
 export default class SingleSkill extends Component {
 
@@ -167,10 +166,6 @@ export default class SingleSkill extends Component {
                 </div>
                 {/* { this.state.imageUrl && <img src={this.state.imageUrl} alt={this.state.title} /> } */}
                 <div className='column'>
-                {this.props.userInSession && this.props.userInSession._id !== this.state.user &&
-                <React.Fragment>
-                    <AddReview skill={this.state._id} updateSkill={response => {this.getUpdatedSkill(response)}}/>
-                </React.Fragment>}
 
                 {this.state.reviews.length > 0 &&
                 <div className='rating-card'>
@@ -236,6 +231,10 @@ export default class SingleSkill extends Component {
                     </div>
                         
                     <button onClick={this.displayReviewList}>See all reviews</button>
+                    {this.props.userInSession && this.props.userInSession._id !== this.state.user &&
+                    <React.Fragment>
+                        <AddReview skill={this.state._id} updateSkill={response => {this.getUpdatedSkill(response)}}/>
+                    </React.Fragment>}
                 </div>
                 }
                 {this.state.displayAllReviews &&

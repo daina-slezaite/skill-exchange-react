@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { Component } from 'react'
+import './AddReview.scss';
 
 export default class AddReview extends Component {
 
@@ -30,15 +31,22 @@ export default class AddReview extends Component {
 
     render() {
         return (
-            <form onSubmit={this.handleFormSubmit}>
-                <span><label>Comment your experience:</label><textarea onChange={this.handleInputChange} value={this.state.comment}></textarea></span>
-                <span><input type="radio" name="rating" id="str1" value="1" checked={this.state.rating === "1"} onChange={this.handleRadioChange} /><label htmlFor="str1">1</label></span>
-                <span><input type="radio" name="rating" id="str2" value="2" checked={this.state.rating === "2"} onChange={this.handleRadioChange} /><label htmlFor="str2">2</label></span>
-                <span><input type="radio" name="rating" id="str3" value="3" checked={this.state.rating === "3"} onChange={this.handleRadioChange} /><label htmlFor="str3">3</label></span>
-                <span><input type="radio" name="rating" id="str4" value="4" checked={this.state.rating === "4"} onChange={this.handleRadioChange} /><label htmlFor="str4">4</label></span>
-                <span><input type="radio" name="rating" id="str5" value="5" checked={this.state.rating === "5"} onChange={this.handleRadioChange} /><label htmlFor="str5">5</label></span>                
-                <button type='submit'>Post</button>
-            </form>
+            <React.Fragment>
+                <h3>Your review:</h3>
+                <form className='add-review' onSubmit={this.handleFormSubmit}>
+                    <label>Comment your experience:</label>
+                    <textarea onChange={this.handleInputChange} value={this.state.comment}></textarea>
+                    <label>Score it out of 5:</label>
+                    <div>
+                        <input type="radio" name="rating" id="str1" value="1" checked={this.state.rating === "1"} onChange={this.handleRadioChange} /><label htmlFor="str1">1</label>
+                        <input type="radio" name="rating" id="str2" value="2" checked={this.state.rating === "2"} onChange={this.handleRadioChange} /><label htmlFor="str2">2</label>
+                        <input type="radio" name="rating" id="str3" value="3" checked={this.state.rating === "3"} onChange={this.handleRadioChange} /><label htmlFor="str3">3</label>
+                        <input type="radio" name="rating" id="str4" value="4" checked={this.state.rating === "4"} onChange={this.handleRadioChange} /><label htmlFor="str4">4</label>
+                        <input type="radio" name="rating" id="str5" value="5" checked={this.state.rating === "5"} onChange={this.handleRadioChange} /><label htmlFor="str5">5</label>               
+                    </div>
+                    <button type='submit'>Post review</button>
+                </form>
+            </React.Fragment>
         )
     }
 }

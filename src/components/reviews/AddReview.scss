@@ -1,0 +1,24 @@
+$font: 'Poppins', sans-serif;
+$textColor: rgb(11,10,10);
+$secondaryTextColor: rgb(235,99,91);
+$borderColor: rgb(142,136,138);
+$buttonPadding: 5px 15px;
+$buttonRadius: 6px;
+$margin: 0 10px;
+
+.add-review {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    textarea {
+        font-family: $font;
+        border: none;
+        border-bottom: 2px solid $secondaryTextColor;
+        margin-bottom: 15px;
+    }
+
+    textarea:focus {
+        outline: none;
+    }
+}
