@@ -43,7 +43,7 @@ export default class MySkills extends Component {
         return (
             <main className='my-skills'>
                 <div>
-                    <Link to='/skills'>Browse skills</Link>
+                    <Link to='/skills'>Go back to browsing</Link>
                     <Popup trigger={<button> Add new skill </button>} modal>
                         <AddSkill getAllMySkills={() => this.getMySkills()} />
                     </Popup>

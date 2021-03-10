@@ -1,0 +1,39 @@
+$font: 'Poppins', sans-serif;
+$textColor: rgb(11,10,10);
+$secondaryTextColor: rgb(235,99,91);
+$borderColor: rgb(142,136,138);
+$backgroundColor: rgb(233,233,233);
+$buttonPadding: 5px 15px;
+$buttonRadius: 6px;
+$margin: 0 20px;
+
+.profile-card {
+    border-radius: $buttonRadius;
+    float: none;
+    width: 45%;
+    padding: 5px 15px 20px 20px;
+    margin: 0 auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+    .profile-links {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    button, a {
+        font-family: $font;
+        color: $textColor;
+        border: 1px solid $borderColor;
+        border-radius: $buttonRadius;
+        text-decoration: none;
+        padding: $buttonPadding;
+        background-color: white;
+        margin-top: 10px;
+
+        &:hover {
+            font-weight: bold;
+            color: $secondaryTextColor;
+        }
+    }
+}

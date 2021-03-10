@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import EditProfile from './EditProfile';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
+import './Profile.scss';
 
 export default class Profile extends Component {
 
@@ -32,15 +33,19 @@ export default class Profile extends Component {
 
     render() {
         return (
-            <div>
-                <p>Username: {this.state.username}</p>
-                <p>Email: {this.state.email}</p>
-                <p>{this.state.description}</p>
-                <Popup trigger={<button> Edit my description </button>} modal>
-                    <EditProfile myProfile={this.state} refreshProfile={this.getUpdatedProfile} />
-                </Popup>
-                <Link to='/my-skills'>My skills</Link>
-            </div>
+            <section className='profile-card'>
+                <div className='profile-links'>
+                    <Link to='/my-skills'>My skills</Link>
+                    <Popup trigger={<button> Edit my description </button>} modal>
+                            <EditProfile myProfile={this.state} refreshProfile={this.getUpdatedProfile} />
+                    </Popup>
+                </div>
+                <div>
+                    <p>Username: {this.state.username}</p>
+                    <p>Email: {this.state.email}</p>
+                    <p>{this.state.description}</p>
+                </div>
+            </section>
         )
     }
 }

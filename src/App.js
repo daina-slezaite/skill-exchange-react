@@ -44,7 +44,7 @@ export default class App extends Component {
         <div className='content'>
           <Navbar userInSession={this.state.loggedInUser} setUser={this.setCurrentUser} removeSession={this.logUserOut} />
           <Switch>
-            <Route exact path='/' render={props => <Home {...props} />} />
+            <Route exact path='/' render={props => <Home {...props} userInSession={this.state.loggedInUser} />} />
             <Route path='/login' render={props => <Login {...props} setUser={this.setCurrentUser} />} />
             <Route path='/signup' render={props => <Signup {...props} setUser={this.setCurrentUser} />} />
             <Route exact path='/skills' render={props => <AllSkills {...props} userInSession={this.state.loggedInUser} setUser={this.setCurrentUser} />} />
