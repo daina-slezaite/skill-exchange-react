@@ -158,11 +158,12 @@ export default class SingleSkill extends Component {
                     <button onClick={this.displayContactInfo}>Swap</button>
                     }
                     {this.state.displayContactDetails &&
-                    <React.Fragment>
-                        <p>{this.state.contact.username}</p>
-                        <p>{this.state.contact.email}</p>
+                    <div className='contact-details'>
+                    <h3>Contact me:</h3>
                         <p>{this.state.contact.description}</p>
-                    </React.Fragment>}
+                        <p>My username: {this.state.contact.username}</p>
+                        <p>My email: {this.state.contact.email}</p>
+                    </div>}
                 </div>
                 {/* { this.state.imageUrl && <img src={this.state.imageUrl} alt={this.state.title} /> } */}
                 <div className='column'>
@@ -245,12 +246,12 @@ export default class SingleSkill extends Component {
                     <React.Fragment>
                         <AddReview skill={this.state._id} updateSkill={response => {this.getUpdatedSkill(response)}}/>
                     </React.Fragment>}
-                {this.state.displayAllReviews &&
-                    <React.Fragment>
-                        <ReviewList allReviews={this.state.reviews} skill={this.state._id} />
-                    </React.Fragment>
-                }
                 </div>
+                {this.state.displayAllReviews &&
+                    <div className='column'>
+                        <ReviewList allReviews={this.state.reviews} skill={this.state._id} />
+                    </div>
+                }
             </section>
         )
     }

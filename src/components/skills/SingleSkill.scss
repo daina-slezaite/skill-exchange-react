@@ -8,10 +8,10 @@ $buttonRadius: 6px;
 $margin: 0 20px;
 
 #skill-section {
-    background-color: $backgroundColor;
+    // background-color: $backgroundColor;
     margin: $margin;
     padding: 10px 20px;
-    border-radius: $buttonRadius;
+    // border-radius: $buttonRadius;
     display: flex;
     justify-content: space-around;
 
@@ -37,11 +37,11 @@ $margin: 0 20px;
     }
 
     .column {
-        background-color: white;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
         border-radius: $buttonRadius;
         float: none;
-        width: 35%;
-        padding: 5px 15px 20px 20px;
+        width: 28%;
+        padding: 5px 30px 20px 30px;
         margin: 0 auto;
     }
 }
@@ -68,19 +68,16 @@ $margin: 0 20px;
         margin-top: 10px;
     }
       
-      /* Place text to the right */
     .right {
         text-align: right;
     }
       
-      /* Clear floats after the columns */
     .row:after {
         content: "";
         display: table;
         clear: both;
     }
       
-      /* The bar container */
     .bar-container {
         width: 100%;
         background-color: #f1f1f1;
@@ -88,19 +85,16 @@ $margin: 0 20px;
         color: white;
     }
       
-      /* Individual bars */
     .bar-5 {height: 18px; background-color: rgb(83,36,211)}
     .bar-4 {height: 18px; background-color: rgb(124,84,213)}
     .bar-3 {height: 18px; background-color: rgb(235,99,91)}
     .bar-2 {height: 18px; background-color: rgb(248,115,110)}
     .bar-1 {height: 18px; background-color: rgb(11,10,10)}
       
-      /* Responsive layout - make the columns stack on top of each other instead of next to each other */
     @media (max-width: 400px) {
         .side, .middle {
           width: 100%;
         }
-        /* Hide the right column on small screens */
         .right {
           display: none;
         }

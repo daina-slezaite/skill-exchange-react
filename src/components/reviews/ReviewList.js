@@ -6,10 +6,7 @@ export default class ReviewList extends Component {
             <div>
                 {this.props.allReviews.map(review => {
                     return(
-                        <div key={review._id}>
-                            <p>{review.comment}</p>
-                            <p>{review.rating}</p>
-                        </div>
+                        <p>{review.comment} | {review.rating}</p>
                     )
                 })}
             </div>
