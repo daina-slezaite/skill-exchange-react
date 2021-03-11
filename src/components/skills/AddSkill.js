@@ -30,7 +30,7 @@ export default class AddSkill extends Component {
         const title = this.state.title;
         const description = this.state.description;
         const category = this.state.category;
-        axios.post('https://skillsw4p.herokuapp.com/skills', {title, description, category, image}, {withCredentials: true})
+        axios.post(`${process.env.REACT_APP_API_URL}/skills`, {title, description, category, image}, {withCredentials: true})
             .then(() => {
                 this.props.getAllMySkills();
                 this.setState({

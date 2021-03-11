@@ -3,7 +3,7 @@ import axios from 'axios';
 class UploadService {
     constructor() {
         let service = axios.create({
-            baseURL: 'https://skillsw4p.herokuapp.com/',
+            baseURL: `${process.env.REACT_APP_API_URL}`,
             withCredentials: true
         });
         this.service = service;

@@ -30,7 +30,7 @@ export default class SingleSkill extends Component {
     }
 
     getSingleSkill() {
-        axios.get(`https://skillsw4p.herokuapp.com/skills/${this.props.match.params.skillId}`, {withCredentials: true})
+        axios.get(`${process.env.REACT_APP_API_URL}/skills/${this.props.match.params.skillId}`, {withCredentials: true})
             .then(response => {
                 const fetchedSkill = response.data;
                 this.setState(fetchedSkill);
@@ -40,7 +40,7 @@ export default class SingleSkill extends Component {
     } 
 
     getUpdatedSkill(response) {
-        axios.get(`https://skillsw4p.herokuapp.com/skills/${response.data._id}`, {withCredentials: true})
+        axios.get(`${process.env.REACT_APP_API_URL}/skills/${response.data._id}`, {withCredentials: true})
             .then(response => {
                 const fetchedSkill = response.data;
                 this.setState(fetchedSkill);
@@ -59,7 +59,7 @@ export default class SingleSkill extends Component {
         const userId = this.state.user;
 
         if (this.props.userInSession) {
-            axios.get(`https://skillsw4p.herokuapp.com/skills/${skillId}/${userId}`, {withCredentials: true})
+            axios.get(`${process.env.REACT_APP_API_URL}/skills/${skillId}/${userId}`, {withCredentials: true})
             .then(response => {
                 this.setState({
                     displayContactDetails: !this.state.displayContactDetails,
@@ -82,7 +82,7 @@ export default class SingleSkill extends Component {
 
     getAllReviews = () => {
         const skill = this.state._id;
-        axios.get(`https://skillsw4p.herokuapp.com/${skill}/reviews`)
+        axios.get(`${process.env.REACT_APP_API_URL}/${skill}/reviews`)
             .then(response => {
                 this.setState({reviews: response.data});
             })
@@ -116,7 +116,7 @@ export default class SingleSkill extends Component {
     }
 
     getFavorites = () => {
-        axios.get('https://skillsw4p.herokuapp.com/my-profile', {withCredentials: true})
+        axios.get(`${process.env.REACT_APP_API_URL}/my-profile`, {withCredentials: true})
             .then(response => {
                 this.setState({favorites: response.data.favoriteSkills})
             })
@@ -125,7 +125,7 @@ export default class SingleSkill extends Component {
 
     addToFavorites = () => {
         const skill = this.state._id;
-        axios.post(`https://skillsw4p.herokuapp.com/skills/${this.state._id}/favorites`, {skill}, {withCredentials: true})
+        axios.post(`${process.env.REACT_APP_API_URL}/skills/${this.state._id}/favorites`, {skill}, {withCredentials: true})
             .then(() => {
                 this.getFavorites();
             })
@@ -133,7 +133,7 @@ export default class SingleSkill extends Component {
     }
 
     removeFromFavorites = () => {
-        axios.delete(`https://skillsw4p.herokuapp.com/skills/${this.state._id}/favorites`, {withCredentials: true})
+        axios.delete(`${process.env.REACT_APP_API_URL}/skills/${this.state._id}/favorites`, {withCredentials: true})
             .then(response => {
                 this.getFavorites();
             })

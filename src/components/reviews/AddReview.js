@@ -21,7 +21,7 @@ export default class AddReview extends Component {
         const rating = parseInt(this.state.rating);
         const {comment} = this.state;
         const skill = this.props.skill;
-        axios.post(`https://skillsw4p.herokuapp.com/${skill}/reviews`, {comment, rating, skill}, {withCredentials: true})
+        axios.post(`${process.env.REACT_APP_API_URL}/${skill}/reviews`, {comment, rating, skill}, {withCredentials: true})
             .then(response => {
                 this.setState({comment: '', rating: ''});
                 this.props.updateSkill(response);
