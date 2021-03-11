@@ -19,7 +19,7 @@ export default class EditProfile extends Component {
     handleFormSubmit = e => {
         e.preventDefault();
         const description = this.state.description;
-        axios.put(`http://localhost:5000/api/edit-profile`, {description}, {withCredentials: true})            
+        axios.put(`https://skillsw4p.herokuapp.com/edit-profile`, {description}, {withCredentials: true})            
             .then(() => {
                 this.setState({description: ''});
                 this.props.refreshProfile();

@@ -11,7 +11,7 @@ export default class Profile extends Component {
     state = {}
 
     getUser() {
-        axios.get('http://localhost:5000/api/my-profile', {withCredentials: true})
+        axios.get('https://skillsw4p.herokuapp.com/my-profile', {withCredentials: true})
             .then(response => {
                 this.setState(response.data);
             })
@@ -23,7 +23,7 @@ export default class Profile extends Component {
     }
 
     getUpdatedProfile = () => {
-        axios.get(`http://localhost:5000/api/my-profile`, {withCredentials: true})
+        axios.get(`https://skillsw4p.herokuapp.com/my-profile`, {withCredentials: true})
             .then(response => {
                 const fetchedProfile = response.data;
                 this.setState(fetchedProfile);

@@ -16,7 +16,7 @@ export default class AllSkills extends Component {
     }
 
     getAllSkills() {
-        axios.get('http://localhost:5000/api/skills', {withCredentials: true})
+        axios.get('https://skillsw4p.herokuapp.com/skills', {withCredentials: true})
             .then(response => {
                 this.setState({
                     allSkills: response.data,
@@ -35,7 +35,7 @@ export default class AllSkills extends Component {
     }
 
     searchBar = (e) => {
-        axios.get(`http://localhost:5000/api/skills/search?title=${e.target.value}`)
+        axios.get(`https://skillsw4p.herokuapp.com/skills/search?title=${e.target.value}`)
             .then(response => {
                 this.setState({allSkills: response.data})
             })

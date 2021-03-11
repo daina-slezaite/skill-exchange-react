@@ -3,7 +3,7 @@ import axios from 'axios';
 class UploadService {
     constructor() {
         let service = axios.create({
-            baseURL: 'http://localhost:5000/api',
+            baseURL: 'https://skillsw4p.herokuapp.com/',
             withCredentials: true
         });
         this.service = service;

@@ -24,7 +24,7 @@ export default class EditSkill extends Component {
         const title = this.state.title;
         const description = this.state.description;
         const category = this.state.category;
-        axios.put(`http://localhost:5000/api/skills/${this.props.currentSkill._id}`, {title, description, category}, {withCredentials: true})
+        axios.put(`https://skillsw4p.herokuapp.com/skills/${this.props.currentSkill._id}`, {title, description, category}, {withCredentials: true})
             .then(response => {
                 this.props.refreshSkill(response);
             })

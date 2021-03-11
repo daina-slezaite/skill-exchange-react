@@ -16,7 +16,7 @@ export default class MySkills extends Component {
     }
 
     getMySkills() {
-        axios.get('http://localhost:5000/api/my-skills', {withCredentials: true})
+        axios.get('https://skillsw4p.herokuapp.com/my-skills', {withCredentials: true})
             .then(response => {
                 this.setState({
                     mySkills: response.data
@@ -30,7 +30,7 @@ export default class MySkills extends Component {
     }
 
     handleDelete(skillId) {
-        axios.delete(`http://localhost:5000/api/skills/${skillId}`)
+        axios.delete(`https://skillsw4p.herokuapp.com/skills/${skillId}`)
             .then(() => {
                 this.getMySkills();
             })
