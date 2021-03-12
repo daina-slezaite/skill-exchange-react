@@ -18,16 +18,18 @@ $margin: 0 20px;
         display: flex;
     }
 
-    a {
-        color: $textColor;
-        border: 1px solid $borderColor;
-        border-radius: $buttonRadius;
-        text-decoration: none;
-        padding: $buttonPadding;
+    .navbar-links {
+        a {
+            color: $textColor;
+            border: 1px solid $borderColor;
+            border-radius: $buttonRadius;
+            text-decoration: none;
+            padding: $buttonPadding;
 
-        &:hover {
-            font-weight: bold;
-            color: $secondaryTextColor;
+            &:hover {
+                font-weight: bold;
+                color: $secondaryTextColor;
+            }
         }
     }
 

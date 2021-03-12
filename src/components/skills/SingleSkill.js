@@ -7,7 +7,6 @@ import AddReview from '../reviews/AddReview';
 import ReviewList from '../reviews/ReviewList';
 import FavoriteButton from '../skills/FavoriteButton';
 import './SingleSkill.scss';
-import Rating from '../reviews/Rating';
 
 export default class SingleSkill extends Component {
 

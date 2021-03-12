@@ -27,7 +27,7 @@ export default class Navbar extends Component {
     render() {
         return (
             <nav className='navbar'>
-                <img className='navbar-logo' src='https://res.cloudinary.com/da6m0xppc/image/upload/v1615121354/skill-swap_yik8gn.svg' alt='Logo' />
+                <Link to='/'><img className='navbar-logo' src='https://res.cloudinary.com/da6m0xppc/image/upload/v1615121354/skill-swap_yik8gn.svg' alt='Logo' /></Link>
                 <div className='navbar-links'>
                 {this.state.loggedInUser ? 
                     <ul>

@@ -51,7 +51,7 @@ export default class Signup extends Component {
                     <label>Password:*</label>
                     <input type='password' name='password' value={this.state.password} onChange={this.handleInputChange} />
                     <span>Must contain a number, a symbol and at least 8 characters</span>
-                    <label>About me:</label>
+                    <label>About me:*</label>
                     <textarea name='description' value={this.state.description} onChange={this.handleInputChange}></textarea>
                     <button type='submit'>Register</button>
                 </form>
