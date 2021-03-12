@@ -12,6 +12,7 @@ import Profile from './components/user/Profile';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import Home from './components/home/Home';
 import Footer from './components/footer/Footer';
+import NotFound from './components/notFound/NotFound';
 
 export default class App extends Component {
 
@@ -72,6 +73,7 @@ export default class App extends Component {
               user={this.state.loggedInUser}
               exact path='/profile'
               component={Profile} />
+            <Route component={NotFound} />
           </Switch>
         </div>
         <Footer />
