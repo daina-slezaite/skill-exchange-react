@@ -178,7 +178,7 @@ export default class SingleSkill extends Component {
                     }
                 {this.state.reviews.length > 0 &&
                 <React.Fragment>
-                <p>{this.state.average} average based on {this.state.reviews.length} reviews</p><Rating>{this.state.average}</Rating>
+                <p>{this.state.average} average based on {this.state.reviews.length} reviews</p>
                 <hr />
                 <div className='rating-card'>
                     <div className="row">

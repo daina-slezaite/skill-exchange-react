@@ -44,12 +44,13 @@ export default class Signup extends Component {
         return (
             <div className='auth-component'>
                 <form className='auth-form' onSubmit={this.handleFormSubmit}>
-                    <label>Email:</label>
+                    <label>Email:*</label>
                     <input type='text' name='email' value={this.state.email} onChange={this.handleInputChange} />
-                    <label>Username:</label>
+                    <label>Username:*</label>
                     <input type='text' name='username' value={this.state.username} onChange={this.handleInputChange} />
-                    <label>Password:</label>
+                    <label>Password:*</label>
                     <input type='password' name='password' value={this.state.password} onChange={this.handleInputChange} />
+                    <span>Must contain a number, a symbol and at least 8 characters</span>
                     <label>About me:</label>
                     <textarea name='description' value={this.state.description} onChange={this.handleInputChange}></textarea>
                     <button type='submit'>Register</button>

@@ -12,7 +12,7 @@ export default function Rating(props) {
 
     for (const rating in ratings) {
         if(rating == Math.round(props.children)){
-            return <div style={{marginBottom: '-10px', paddingTop: '5px'}} className="rating">{ratings[rating]}</div>
+            return <div style={{marginBottom: '-10px', paddingTop: '10px'}} className="rating">{ratings[rating]}</div>
         }
     }
 }

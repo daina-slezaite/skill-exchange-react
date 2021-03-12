@@ -40,7 +40,6 @@ export default class MySkills extends Component {
     }
 
     render() {
-        const overlayStyle = {'borderRadius': '6px', 'boxShadow': '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)'}
         return (
             <main className='my-skills'>
                 <div>
@@ -56,7 +55,6 @@ export default class MySkills extends Component {
                             <div key={skill._id}>
                                 <h3><Link to={`/skills/${skill._id}`}>{skill.title}</Link></h3>
                                 <img src='https://res.cloudinary.com/da6m0xppc/image/upload/v1615318971/bin_ndnbz3.svg' alt='Delete skill icon' onClick={(skillId)=> this.handleDelete(skill._id)} />
-                                {/* <button onClick={(skillId)=> this.handleDelete(skill._id)}>Delete</button> */}
                             </div>
                             <p>{skill.description}</p>
                         </section>
