@@ -40,13 +40,14 @@ export default class MySkills extends Component {
     }
 
     render() {
+        const overlayStyle = {'borderRadius': '6px', 'boxShadow': '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)'}
         return (
             <main className='my-skills'>
                 <div>
                     <Link to='/skills'>Go back to browsing</Link>
-                    <Popup trigger={<button> Add new skill </button>} modal>
-                        <AddSkill getAllMySkills={() => this.getMySkills()} />
-                    </Popup>
+                        <Popup trigger={<button> Add new skill </button>} modal>
+                            <AddSkill getAllMySkills={() => this.getMySkills()} />
+                        </Popup>
                 </div>
                 <ul>
                 {this.state.mySkills.map(skill => {

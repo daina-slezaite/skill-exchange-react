@@ -37,7 +37,7 @@ export default class Profile extends Component {
                 <div className='profile-links'>
                     <Link to='/my-skills'>My skills</Link>
                     <Popup trigger={<button> Edit my description </button>} modal>
-                            <EditProfile myProfile={this.state} refreshProfile={this.getUpdatedProfile} />
+                        <EditProfile myProfile={this.state} refreshProfile={this.getUpdatedProfile} />
                     </Popup>
                 </div>
                 <div>

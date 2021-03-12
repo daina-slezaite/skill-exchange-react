@@ -10,6 +10,7 @@ $margin: 0 10px;
     display: flex;
     flex-direction: column;
     padding: 30px 50px;
+    line-height: 4em;
 
     input, select {
         font-family: $font;
@@ -18,7 +19,8 @@ $margin: 0 10px;
     }
 
     input:focus,
-    select:focus {
+    select:focus,
+    textarea:focus {
         outline: none;
     }
 

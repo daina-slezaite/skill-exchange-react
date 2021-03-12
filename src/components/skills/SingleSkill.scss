@@ -37,12 +37,15 @@ $margin: 0 20px;
     }
 
     .column {
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        border-radius: $buttonRadius;
         float: none;
         width: 28%;
         padding: 5px 30px 20px 30px;
         margin: 0 auto;
+    }
+
+    .styled-column {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        border-radius: $buttonRadius;
     }
 }
 

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { Component } from 'react';
+import '../skills/Addskill.scss';
 
 export default class EditProfile extends Component {
 
@@ -30,9 +31,9 @@ export default class EditProfile extends Component {
     render() {
         return (
             <div>
-                <form onSubmit={this.handleFormSubmit}>
+                <form className='add-skill' onSubmit={this.handleFormSubmit}>
                     <label>Update your description:</label>
-                    <textarea name='description' value={this.state.description} onChange={this.handleInputChange}></textarea>
+                    <textarea style={{paddingBottom: '50px'}} name='description' value={this.state.description} onChange={this.handleInputChange}></textarea>
                     <button type='submit'>Save my changes</button> 
                 </form>
             </div>

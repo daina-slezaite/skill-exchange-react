@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { Component } from 'react';
+import './Addskill.scss';
 
 export default class EditSkill extends Component {
 
@@ -34,7 +35,7 @@ export default class EditSkill extends Component {
     render() {
         return (
             <div>
-                <form onSubmit={this.handleFormSubmit}>
+                <form className='add-skill' onSubmit={this.handleFormSubmit}>
                     <label>Rename your skill:</label>
                     <input type='text' name='title' value={this.state.title} onChange={this.handleInputChange} />
 

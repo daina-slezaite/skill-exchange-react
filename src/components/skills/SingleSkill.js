@@ -7,6 +7,7 @@ import AddReview from '../reviews/AddReview';
 import ReviewList from '../reviews/ReviewList';
 import FavoriteButton from '../skills/FavoriteButton';
 import './SingleSkill.scss';
+import Rating from '../reviews/Rating';
 
 export default class SingleSkill extends Component {
 
@@ -143,7 +144,7 @@ export default class SingleSkill extends Component {
     render() {
         return (
             <section id='skill-section'>
-                <div className='column'>
+                <div className='column styled-column'>
                     <div className='skill-name'>
                         <h2>{this.state.title}</h2>
                         {this.props.userInSession && this.props.userInSession._id !== this.state.user && 
@@ -166,7 +167,7 @@ export default class SingleSkill extends Component {
                     </div>}
                 </div>
                 {/* { this.state.imageUrl && <img src={this.state.imageUrl} alt={this.state.title} /> } */}
-                <div className='column'>
+                <div className='column styled-column'>
                     <h2>Skill reviews</h2>
 
                     {this.state.reviews.length === 0 && 
@@ -177,7 +178,7 @@ export default class SingleSkill extends Component {
                     }
                 {this.state.reviews.length > 0 &&
                 <React.Fragment>
-                <p>{this.state.average} average based on {this.state.reviews.length} reviews</p>
+                <p>{this.state.average} average based on {this.state.reviews.length} reviews</p><Rating>{this.state.average}</Rating>
                 <hr />
                 <div className='rating-card'>
                     <div className="row">

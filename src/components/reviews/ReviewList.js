@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import Rating from './Rating';
+import './ReviewList.scss';
 
 export default class ReviewList extends Component {
     render() {
@@ -6,7 +8,10 @@ export default class ReviewList extends Component {
             <div>
                 {this.props.allReviews.map(review => {
                     return(
-                        <p>{review.comment} | {review.rating}</p>
+                        <div className='single-review'>
+                            <Rating>{review.rating}</Rating>
+                            <p>{review.comment}</p>
+                        </div>
                     )
                 })}
             </div>
